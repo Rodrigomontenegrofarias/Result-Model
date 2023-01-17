@@ -1,5 +1,4 @@
 
-
 FROM ubuntu:18.04
 # Image providing Jupyter notebook server with Python 3.6 bindings for OpenCV 3.4.5
 # Based on https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
@@ -63,44 +62,30 @@ RUN pip install matplotlib
 RUN pip install pandas
 #RUN pip install pandas as sb
 RUN pip install keras
-
-RUN pip install -U -q segmentation-models
-RUN pip install -q tensorflow==2.1
-
-RUN pip install -q keras==2.3.1
-RUN pip install -q tensorflow-estimator==2.1. 
-#RUN pip install --upgrade tensorflow
-#RUN pip install numpy
-#RUN pip install keras
-
-#RUN pip install tensorflow==1.15.4
-
-
+RUN pip install numpy
+RUN pip install keras
 RUN pip install scipy
 RUN pip install scikit-learn
 RUN pip install seaborn
 RUN pip install keras
 RUN pip install sklearn
 RUN pip install conda
-#RUN pip install tensorflow 
 # verRUN pip install mpl_toolkits
-#RUN pip install imageio-ffmpeg
+RUN pip install imageio-ffmpeg
 #RUN pip install mpl_toolkits
-RUN pip install tensorflow==1.15
 RUN pip install scikit-image
 RUN pip install pillow
-#RUN pip install opencv-python
-#RUN pip install moviepy
+RUN pip install opencv-python
+RUN pip install moviepy
 RUN pip install --upgrade matplotlib
-#RUN pip install keras-models
-RUN pip install keras-models==0.0.2
-#RUN pip install keras 
-RUN pip install charset-normalizer==2.0.12
-#RUN pip install tensorflow
+RUN pip install keras-models
+RUN pip install keras 
+RUN pip install chardet
+RUN pip install tensorflow
 RUN pip install plotly
 RUN pip install statsmodels
 RUN pip install openpyxl
-RUN apt-get install -y git
+RUN apt-get update && apt-get install -y git
 
 
 

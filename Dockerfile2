@@ -1,5 +1,4 @@
 
-
 FROM ubuntu:18.04
 # Image providing Jupyter notebook server with Python 3.6 bindings for OpenCV 3.4.5
 # Based on https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
@@ -66,7 +65,6 @@ RUN pip install keras
 
 RUN pip install -U -q segmentation-models
 RUN pip install -q tensorflow==2.1
-
 RUN pip install -q keras==2.3.1
 RUN pip install -q tensorflow-estimator==2.1. 
 #RUN pip install --upgrade tensorflow
