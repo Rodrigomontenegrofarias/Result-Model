@@ -1,5 +1,5 @@
 
-
+	
 FROM ubuntu:18.04
 # Image providing Jupyter notebook server with Python 3.6 bindings for OpenCV 3.4.5
 # Based on https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
@@ -9,7 +9,7 @@ FROM ubuntu:18.04
 # Switch to root to be able to install stuff
 USER root
 
-# This will make apt-get install without question
+# This w	ill make apt-get install without question
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update package list, upgrade system and set default locale
@@ -22,11 +22,16 @@ RUN apt-get update  && \
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
+RUN apt-get update && \
+    apt-get install -y git
 
+#RUN apt-get update && apt-get install -y libeigen3-dev
 # Install python3.6
-RUN apt-get -y install python3.6-dev python3.6 python3-pip && \
+
+RUN apt-get -y install python3.7-dev python3.7 python3-pip && \
     pip3 install --upgrade pip && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+
 
 # Install packages required for compiling opencv
 RUN apt-get -y install build-essential cmake unzip pkg-config wget
@@ -37,10 +42,11 @@ RUN apt-get -y install libjpeg-dev libpng-dev libtiff-dev
 # Install packages providing support for several video formats
 # so you can work with your camera stream and process video files
 RUN apt-get -y install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev
-
+ 
 # Install gtk (GUI components in opencv rely on gtk)
 # as OpenCV’s highgui relies on the GTK library for GUI operations
 RUN apt-get -y install libgtk-3-dev
+
 
 # Install additional packages optimizing opencv
 RUN apt-get -y install libatlas-base-dev gfortran
@@ -64,11 +70,12 @@ RUN pip install pandas
 #RUN pip install pandas as sb
 RUN pip install keras
 
+
 RUN pip install -U -q segmentation-models
 RUN pip install -q tensorflow==2.1
 
 RUN pip install -q keras==2.3.1
-RUN pip install -q tensorflow-estimator==2.1. 
+#RUN pip install -q tensorflow-estimator==2.1. 
 #RUN pip install --upgrade tensorflow
 #RUN pip install numpy
 #RUN pip install keras
@@ -86,7 +93,7 @@ RUN pip install conda
 # verRUN pip install mpl_toolkits
 #RUN pip install imageio-ffmpeg
 #RUN pip install mpl_toolkits
-RUN pip install tensorflow==1.15
+#RUN pip install tensorflow==1.15
 RUN pip install scikit-image
 RUN pip install pillow
 #RUN pip install opencv-python
@@ -99,14 +106,47 @@ RUN pip install charset-normalizer==2.0.12
 #RUN pip install tensorflow
 RUN pip install plotly
 RUN pip install statsmodels
-RUN pip install openpyxl
-RUN apt-get install -y git
+#RUN pip install openpyxUN pip install python-git==2018.1.31
+
+#RUN pip install tensorflow
+
+# install tf-levenberg-marquardt
+#RUN pip install tf-levenberg-marquardt
 
 
 
+RUN pip install sqlalchemy
+
+RUN pip install PyMySQL==1.0.1
+
+RUN pip install pyodbc==4.0.34
+
+RUN pip install db-sqlite3==0.0.1
+
+RUN pip install tensorflow-addons==0.11.0
+
+RUN pip install --upgrade tensorflow==2.3.1
+
+RUN pip install tensorflow-addons[optimizers]
+
+RUN pip install eigen==0.0.1
+
+RUN pip install tensorflow-addons[Levenberg-Marquardt]
+
+RUN pip install keras==2.4.3
 
 
 
+RUN apt-get update && apt-get install -y \
+    python3 \
+    libeigen3-dev \
+    cmake
+# Build and instal
+RUN apt-get update && apt-get install -y libeigen3-dev
+
+
+
+#RUN pip install keras-levenberg-marquardt
 # Configure, compile, install, clean up
 #RUN mkdir opencv-${OPENCV_VERSION}/build && \
   #  cd opencv-${OPENCV_VERSION}/build && \
@@ -118,7 +158,7 @@ RUN apt-get install -y git
      #   -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-${OPENCV_VERSION}/modules \
      #   -D OPENCV_SKIP_PYTHON_LOADER=ON \
      #   -D PYTHON_EXECUTABLE=/usr/bin/python \
-      
+# Build and instal      
       #  -D BUILD_EXAMPLES=ON \
        # -D BUILD_DOCS=OFF \
        # -D BUILD_PERF_TESTS=OFF \
