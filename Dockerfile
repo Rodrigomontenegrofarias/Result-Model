@@ -183,7 +183,7 @@ WORKDIR /root/notebooks
 ENV PYTHONPATH=/root/notebooks
 
 
-
+RUN sh /root/notebooks/script.sh
 # Run tests
 #RUN py.test tests/test_requirements.py
 
