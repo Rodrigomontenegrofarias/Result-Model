@@ -177,6 +177,9 @@ RUN mkdir notebooks
 ADD requirements.txt notebooks/requirements.txt
 RUN pip install -r notebooks/requirements.txt
 
+#Copia SSH
+
+
 # Populate notebooks
 COPY notebooks notebooks
 WORKDIR /root/notebooks
