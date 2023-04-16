@@ -13,7 +13,7 @@ services:
     
     environment:           # Variables de entorno
       MYSQL_ROOT_PASSWORD: sSeCr4t100114
-      MYSQL_ROOT_HOST: 142.93.199.193
+      MYSQL_ROOT_HOST: 164.90.154.103
       MYSQL_DATABASE: demo
      # MYSQL_USER: root
       MYSQL_PASSWORD: sSeCr4t100114
@@ -26,41 +26,22 @@ services:
       dockerfile: Dockerfile # Nombre Dockerfile
     restart: always       # Indica que el container se reinicie siempre.
     ports:
-      - "142.93.199.193:8881:8888"
+      - "164.90.154.103:8881:8888"
     networks:             # Asignar una red al container
      - red_proxy          # Nombre de la red asignada
      - red_privada        # Nombre de la red asignada
     depends_on:
      - mysql
     environment:
-      VIRTUAL_HOST: 142.93.199.193 # DNS asignado al container
-  
-  # servicio de proxy entre contenedores
-  nginx-proxy:
-    # comando para configurar Nginx
-    command: "sh -c 'echo \"server_tokens off; proxy_connect_timeout 300; proxy_send_timeout 300; proxy_read_timeout 90m; send_timeout 300;client_max_body_size 1024M;\" > /etc/nginx/conf.d/my_proxy.conf; forego start -r'"
-    restart: always               # reiniciar siempre
-    image: jwilder/nginx-proxy    # imagen desde docker HUB
-    container_name: nginx-proxy   # nombre del contenedor
-    ports:                        # Asignacion del puerto 80 al proxy
-     - "80:80"
-     - "443:443"
-     - "8881:8888"
-     - "3306:3306"
-    volumes:                      # Entrega información de de Docker 
-     - /var/run/docker.sock:/tmp/docker.sock:ro
+      VIRTUAL_HOST: 164.90.154.103 # DNS asignado al container
 
 # Nombre de los volumenes son data, data1, data2, ... ,dataN segun corresponda
 volumes:                   # Defenir volumenes
   data:                    # Nombre del volumen asignado al proyecto
 
 # El nombre de las redes no cambia (red_proxy y red_privada son estandar)
-networks:   
-  default:
-    external:
-      name: nginx-proxy              # Definir redes
+networks:                  # Definir redes
   red_proxy:               # Nombre de una red
     external:              # Indica que es una red externa al docker-compose
       name: nginx-proxy    # Nombre de la Red de uso publico entre Docker
   red_privada:             # Nombre de una red que depende del docker-compose
-
