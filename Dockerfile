@@ -1,5 +1,3 @@
-
-	
 FROM ubuntu:18.04
 # Image providing Jupyter notebook server with Python 3.6 bindings for OpenCV 3.4.5
 # Based on https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
@@ -196,4 +194,4 @@ ENTRYPOINT ["jupyter", "notebook"]
 EXPOSE 8881
 #docker run -p 8881:8888 monteblack1/notebook-111 
 
-#docker build . -t monteblack1/notebook-111      
+#docker build . -t monteblack1/notebook-111  
